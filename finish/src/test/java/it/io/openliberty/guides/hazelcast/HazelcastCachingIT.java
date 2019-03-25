@@ -1,3 +1,4 @@
+// tag::copyright[]
 /*
  * Copyright 2014-2016 the original author or authors.
  *
@@ -13,6 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+ // end::copyright[]
 package it.io.openliberty.guides.hazelcast;
 
 import io.openliberty.guides.hazelcast.CommandResponse;
