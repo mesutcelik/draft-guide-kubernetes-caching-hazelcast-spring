@@ -48,6 +48,10 @@ deploy to a local {kube} cluster.
 You will then create a Kubernetes Service which load balance between containers and 
 verify that you can share data between Microservices.
 
+Caching plays an important role in high performing microservices. Hazelcast keeps frequently accessed data in-memory
+so you can store your database queries,lookup data or http sessions for fast access. Hazelcast is elastic so it scale out/in 
+easily on commodity hardware. Data is automatically distributed among new hazelcast cluster members.
+
 The microservice you will deploy is called `hazelcast-caching`. The `hazelcast-caching` microservice simply
 helps you put a data and read it back. As Kubernetes Service will send the request to different pod each time 
 you initiate the request, the data will be served by shared hazelcast cluster between `hazelcast-caching` pods.
@@ -56,12 +60,23 @@ You will use a local single-node {kube} cluster. However, you can deploy this ap
 such as IBM Cloud Private.
 
 == What is {hazelcast}?
-Hazelcast is an open source In-Memory Data Grid (IMDG). It provides elastically scalable distributed In-Memory computing, 
+
+[Hazelcast](https://hazelcast.org/) is an open source In-Memory Data Grid (IMDG). It provides elastically scalable distributed In-Memory computing, 
 widely recognized as the fastest and most scalable approach to application performance.
 
 Hazelcast is designed to scale up to hundreds and thousands of members. 
 Simply add new members and they will automatically discover the cluster 
 and will linearly increase both memory and processing capacity
+
+== Caching Strategies
+
+Hazelcast supports multiple cloud-native options when it comes to deployment.
+
+- embedded: Hazelcast starts with each of your microservice and joins to the existing Hazelcast Cluster 
+- client/server: Microservices can connect to a remote Hazelcast Cluster 
+- Hazelcast Cloud: Microservices can can keep their data in serverless manner with [Hazelcast Cloud](https://cloud.hazelcast.com/)
+
+This guide uses embedded option.
 
 == Why Spring Boot?
 Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run".
